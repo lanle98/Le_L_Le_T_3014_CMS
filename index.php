@@ -1,17 +1,28 @@
 <?php
 require_once 'load.php';
 
-if (isset($_GET['filter'])) {
+if (isset($_GET['brand'])) {
     $args = array(
-        'tbl' => 'tbl_movies',
-        'tbl2' => 'tbl_genre',
-        'tbl3' => 'tbl_mov_genre',
-        'col' => 'movies_id',
-        'col2' => 'genre_id',
-        'col3' => 'genre_name',
-        'filter' => $_GET['filter']
+        'tbl' => 'tbl_products',
+        'tbl2' => 'tbl_brand',
+        'tbl3' => 'tbl_linking_brand',
+        'col' => 'product_id',
+        'col2' => 'brand_id',
+        'col3' => 'brand_name',
+        'filter' => $_GET['brand']
     );
-    $getProducts = getMoviesByFilter($args);
+    $getProducts = getProductsByFilter($args);
+} elseif (isset($_GET['gender'])) {
+    $args = array(
+        'tbl' => 'tbl_products',
+        'tbl2' => 'tbl_gender',
+        'tbl3' => 'tbl_linking_gender',
+        'col' => 'product_id',
+        'col2' => 'gender_id',
+        'col3' => 'gender_type',
+        'filter' => $_GET['gender']
+    );
+    $getProducts = getProductsByFilter($args);
 } else {
     $products_table = 'tbl_products';
     $getProducts = getAll($products_table);
@@ -36,6 +47,10 @@ if (isset($_GET['filter'])) {
         object-fit: cover;
         height: 300px !important;
     }
+
+    li {
+        list-style-type: none
+    }
 </style>
 
 <body class="container">
@@ -44,7 +59,7 @@ if (isset($_GET['filter'])) {
         <?php while ($row = $getProducts->fetch(PDO::FETCH_ASSOC)) : ?>
             <div class="movie-item col-12 col-md-4 p-5">
                 <img class="img-fluid w-100" src="images/<?php echo $row['image']; ?>" alt="<?php echo $row['product_name']; ?>" />
-                <h2><?php echo $row['product_name']; ?></h2>
+                <h5><?php echo $row['product_name']; ?></h5>
                 <h4><?php echo $row['price']; ?></h4>
                 <a href="details.php?id=<?php echo $row["product_id"]; ?>">Read More</a>
             </div>

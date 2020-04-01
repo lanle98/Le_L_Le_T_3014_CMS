@@ -30,7 +30,7 @@ function getSingleMovie($tbl, $col, $id)
     }
 }
 
-function getMoviesByFilter($args)
+function getProductsByFilter($args)
 {
     $pdo = Database::getInstance()->getConnection();
     $query = 'SELECT * FROM ' . $args['tbl'] . ' AS t,';
@@ -46,5 +46,19 @@ function getMoviesByFilter($args)
         return $results;
     } else {
         return 'There was a problem';
+    }
+}
+
+function getFilter($tbl, $col)
+{
+    $pdo = Database::getInstance()->getConnection();
+
+    $queryAll = "SELECT $col FROM $tbl";
+    $results = $pdo->query($queryAll);
+
+    if ($results) {
+        return $results;
+    } else {
+        return 'There was a problem accessing this info';
     }
 }
