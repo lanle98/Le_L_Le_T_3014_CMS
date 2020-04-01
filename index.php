@@ -23,6 +23,17 @@ if (isset($_GET['brand'])) {
         'filter' => $_GET['gender']
     );
     $getProducts = getProductsByFilter($args);
+} elseif ((isset($_GET['type']))) {
+    $args = array(
+        'tbl' => 'tbl_products',
+        'tbl2' => 'tbl_product_type',
+        'tbl3' => 'tbl_product_linking_type',
+        'col' => 'product_id',
+        'col2' => 'type_id',
+        'col3' => 'product_type_name',
+        'filter' => $_GET['type']
+    );
+    $getProducts = getProductsByFilter($args);
 } else {
     $products_table = 'tbl_products';
     $getProducts = getAll($products_table);

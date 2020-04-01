@@ -11,7 +11,7 @@
             $col = 'brand_name';
             $getFilter = getFilter($tbl, $col);
             while ($row = $getFilter->fetch(PDO::FETCH_ASSOC)) : ?>
-                <li><a href='index.php?brand=<?php echo  $row['brand_name'] ?>'><?php echo $row['brand_name'] ?></a></li>
+                <li><a href='index.php?brand=<?php echo  $row[$col] ?>'><?php echo $row[$col] ?></a></li>
             <?php endwhile; ?>
         </ul>
 
@@ -22,7 +22,18 @@
             $col = 'gender_type';
             $getFilter = getFilter($tbl, $col);
             while ($row = $getFilter->fetch(PDO::FETCH_ASSOC)) : ?>
-                <li><a href='index.php?gender=<?php echo $row['gender_type'] ?>'><?php echo $row['gender_type'] ?></a></li>
+                <li><a href='index.php?gender=<?php echo $row[$col] ?>'><?php echo $row[$col] ?></a></li>
+            <?php endwhile; ?>
+        </ul>
+
+        <ul>
+            Type
+            <?php
+            $tbl = 'tbl_product_type';
+            $col = 'product_type_name';
+            $getFilter = getFilter($tbl, $col);
+            while ($row = $getFilter->fetch(PDO::FETCH_ASSOC)) : ?>
+                <li><a href='index.php?type=<?php echo $row[$col] ?>'><?php echo $row[$col] ?></a></li>
             <?php endwhile; ?>
         </ul>
 

@@ -1,12 +1,12 @@
 <?php
 
-function addMovie($movie)
+function addproduct($product)
 {
 
     try {
         $pdo = Database::getInstance()->getConnection();
 
-        $cover = $movie['cover'];
+        $cover = $product['image'];
         $upload_file = pathinfo($cover['name']);
         $accepted_types = array('gif', 'jpg', 'png', 'jpeg', 'webp');
         if (!in_array($upload_file['extension'], $accepted_types)) {
@@ -24,31 +24,58 @@ function addMovie($movie)
 
 
 
-        $insert_movie_query = 'INSERT INTO tbl_movies(movies_cover,movies_title,movies_year,movies_runtime,movies_storyline,movies_trailer,movies_release)';
-        $insert_movie_query .= ' VALUE(:movies_cover,:movies_title,:movies_year,:movies_runtime,:movies_storyline,:movies_trailer,:movies_release)';
+        $insert_product_query = 'INSERT INTO tbl_products(product_name,price,detail,image)';
+        $insert_product_query .= ' VALUE(:name,:price,:detail,:image)';
 
-        $insert_movie = $pdo->prepare($insert_movie_query);
-        $insert_movie_result = $insert_movie->execute(
+        $insert_product = $pdo->prepare($insert_product_query);
+        $insert_product_result = $insert_product->execute(
             array(
-                ':movies_cover' => $generated_filename,
-                ':movies_title' => $movie['title'],
-                ':movies_year' => $movie['year'],
-                ':movies_runtime' => $movie['run'],
-                ':movies_storyline' => $movie['story'],
-                ':movies_trailer' => $movie['trailer'],
-                ':movies_release' => $movie['release']
+                ':name' => $product['name'],
+                ':price' => $product['price'],
+                ':detail' => $product['detail'],
+                ':image' => $generated_filename,
             )
         );
 
         $last_uploaded_id = $pdo->lastInsertId();
-        if ($insert_movie_result && !empty($last_uploaded_id)) {
-            $update_genre_query = 'INSERT INTO tbl_mov_genre(movies_id,genre_id) VALUES(:movies_id,:genre_id)';
-            $update_genre = $pdo->prepare($update_genre_query);
+        if ($insert_product_result && !empty($last_uploaded_id)) {
+            $update_gender_query = 'INSERT INTO tbl_linking_gender(product_id,gender_id) VALUES(:product_id,:gender_id)';
+            $update_gender = $pdo->prepare($update_gender_query);
 
-            $update_genre_result = $update_genre->execute(
+            $update_gender_result = $update_gender->execute(
                 array(
-                    ':movies_id' => $last_uploaded_id,
-                    ':genre_id' => $movie['genre']
+                    ':product_id' => $last_uploaded_id,
+                    ':gender_id' => $product['gender']
+                )
+            );
+
+            $update_brand_query = 'INSERT INTO tbl_linking_brand(product_id,brand_id) VALUES(:product_id,:brand_id)';
+            $update_brand = $pdo->prepare($update_brand_query);
+
+            $update_brand_result = $update_brand->execute(
+                array(
+                    ':product_id' => $last_uploaded_id,
+                    ':brand_id' => $product['brand']
+                )
+            );
+
+            $update_color_query = 'INSERT INTO tbl_linking_color(product_id,color_id) VALUES(:product_id,:color_id)';
+            $update_color = $pdo->prepare($update_color_query);
+
+            $update_color_result = $update_color->execute(
+                array(
+                    ':product_id' => $last_uploaded_id,
+                    ':color_id' => $product['color']
+                )
+            );
+
+            $update_type_query = 'INSERT INTO tbl_product_linking_type(product_id,type_id) VALUES(:product_id,:type_id)';
+            $update_type = $pdo->prepare($update_type_query);
+
+            $update_type_result = $update_type->execute(
+                array(
+                    ':product_id' => $last_uploaded_id,
+                    ':type_id' => $product['type']
                 )
             );
         }

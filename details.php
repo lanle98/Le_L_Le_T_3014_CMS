@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $col = 'product_id';
 
-    $getMovies = getSingleMovie($product_table, $col, $id);
+    $getProduct = getSingleProduct($product_table, $col, $id);
 }
 
 
@@ -23,9 +23,9 @@ if (isset($_GET['id'])) {
     <title>Welcome to the Movie CMS!</title>
 </head>
 
-<body>
+<body class="container">
     <?php include 'templates/header.php'; ?>
-    <?php while ($row = $getMovies->fetch(PDO::FETCH_ASSOC)) : ?>
+    <?php while ($row = $getProduct->fetch(PDO::FETCH_ASSOC)) : ?>
         <div class="row">
             <img class="img-fluid col-12 col-md-6" src="images/<?php echo $row['image']; ?>" alt="<?php echo $row['product_name']; ?>" />
             <div class="col-md-6 px-5">
@@ -35,6 +35,7 @@ if (isset($_GET['id'])) {
                 <p>Review: "<?php echo $row['review']; ?>"</p>
                 <p>Gender: <?php echo $row['gender']; ?></p>
                 <p>Brand: <?php echo $row['brand']; ?></p>
+                <p>Type: <?php echo $row['type']; ?></p>
                 <a href="index.php">Go Back ...</a>
             </div>
 
