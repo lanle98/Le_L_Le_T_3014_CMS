@@ -3,7 +3,7 @@
 <header>
     <h2>This is the header</h2>
     <nav class='filterNav row'>
-
+        <a href="index.php">All Products</a>
         <ul>
             Brand
             <?php

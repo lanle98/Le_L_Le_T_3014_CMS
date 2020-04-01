@@ -19,7 +19,7 @@ function getSingleMovie($tbl, $col, $id)
 
     // 
     $pdo = Database::getInstance()->getConnection();
-    $query = "select p.*, GROUP_CONCAT(c.color_name) as color, g.gender_type as gender, r.review_scale as review, b.brand_name as brand from tbl_products p left join tbl_linking_color link ON link.product_id = p.product_id left join tbl_color c on c.color_id = link.color_id left join tbl_linking_gender link_g ON link_g.product_id = p.product_id left join tbl_gender g on g.gender_id = link_g.gender_id left join tbl_linking_review link_r on link_r.product_id = p.product_id left join tbl_review r on r.review_id = link_r.review_id left join tbl_linking_brand link_b on link_b.product_id = p.product_id left join tbl_brand b on b.brand_id = link_b.brand_id where p.product_id=$id;";
+    $query = "select p.*, GROUP_CONCAT(c.color_name) as color, g.gender_type as gender, r.review_scale as review, b.brand_name as brand from $tbl p left join tbl_linking_color link ON link.product_id = p.product_id left join tbl_color c on c.color_id = link.color_id left join tbl_linking_gender link_g ON link_g.product_id = p.product_id left join tbl_gender g on g.gender_id = link_g.gender_id left join tbl_linking_review link_r on link_r.product_id = p.product_id left join tbl_review r on r.review_id = link_r.review_id left join tbl_linking_brand link_b on link_b.product_id = p.product_id left join tbl_brand b on b.brand_id = link_b.brand_id where p.product_id=$id;";
 
     $results = $pdo->query($query);
 
