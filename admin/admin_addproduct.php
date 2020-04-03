@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <?php echo !empty($message) ? $message : ''; ?>
-    <form action='admin_addmovie.php' method="post" enctype="multipart/form-data">
+    <form action='admin_addproduct.php' method="post" enctype="multipart/form-data">
         <label>Product Image:</label><br>
         <input type='file' name="image" value=""><br><br>
 
@@ -96,6 +96,7 @@ if (isset($_POST['submit'])) {
 
 
         </select>
+        <br>
 
         <select required name="type">
             <option>Please select type for product</option>

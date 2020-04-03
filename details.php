@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $col = 'product_id';
 
-    $getProduct = getSingleProduct($product_table, $col, $id);
+    $getProduct = getSingleProduct($id);
 }
 
 
@@ -32,11 +32,10 @@ if (isset($_GET['id'])) {
                 <h2><?php echo $row['product_name']; ?></h2>
                 <h4><?php echo $row['price']; ?></h4>
                 <p><?php echo $row['detail']; ?></p>
-                <p>Review: "<?php echo $row['review']; ?>"</p>
                 <p>Gender: <?php echo $row['gender']; ?></p>
                 <p>Brand: <?php echo $row['brand']; ?></p>
                 <p>Type: <?php echo $row['type']; ?></p>
-                <a href="index.php">Go Back ...</a>
+                <a href="index.php">Go Back ...</a><br>
             </div>
 
         </div>
