@@ -1,4 +1,16 @@
-<?php require_once 'load.php'; ?>
+<?php require_once 'load.php';
+
+if (isset($_GET['submit'])) {
+    $products_table = 'tbl_products';
+    $input = $_GET['search'];
+    $getProducts = searchProducts($products_table, $input);
+}
+
+
+?>
+
+
+
 
 <header>
     <h2>This is the header</h2>
@@ -38,6 +50,10 @@
         </ul>
 
 
+        <form action="index.php" method="get">
+            <input name='search' type="text" placeholder="search product ...">
+            <button name="submit" type="submit">search</button>
+        </form>
 
     </nav>
 </header>

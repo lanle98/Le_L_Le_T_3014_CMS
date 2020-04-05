@@ -62,3 +62,17 @@ function getFilter($tbl, $col)
         return 'There was a problem accessing this info';
     }
 }
+
+function searchProducts($products_table, $input)
+{
+    $pdo = Database::getInstance()->getConnection();
+
+    $queryAll = "SELECT * FROM $products_table having product_name like '%$input%';";
+    $results = $pdo->query($queryAll);
+
+    if ($results) {
+        return $results;
+    } else {
+        return 'There was a problem accessing this info';
+    }
+}
