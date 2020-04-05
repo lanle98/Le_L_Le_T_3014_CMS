@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Mar 31, 2020 at 04:24 PM
--- Server version: 5.7.26
--- PHP Version: 7.3.8
+-- Máy chủ: mysql
+-- Thời gian đã tạo: Th4 05, 2020 lúc 03:28 AM
+-- Phiên bản máy phục vụ: 10.3.22-MariaDB-1:10.3.22+maria~bionic
+-- Phiên bản PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_sport_check`
+-- Cơ sở dữ liệu: `db_sportchek`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_brand`
+-- Cấu trúc bảng cho bảng `tbl_brand`
 --
 
 CREATE TABLE `tbl_brand` (
@@ -32,7 +34,7 @@ CREATE TABLE `tbl_brand` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_brand`
+-- Đang đổ dữ liệu cho bảng `tbl_brand`
 --
 
 INSERT INTO `tbl_brand` (`brand_id`, `brand_name`) VALUES
@@ -46,7 +48,7 @@ INSERT INTO `tbl_brand` (`brand_id`, `brand_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_color`
+-- Cấu trúc bảng cho bảng `tbl_color`
 --
 
 CREATE TABLE `tbl_color` (
@@ -55,7 +57,7 @@ CREATE TABLE `tbl_color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_color`
+-- Đang đổ dữ liệu cho bảng `tbl_color`
 --
 
 INSERT INTO `tbl_color` (`color_id`, `color_name`) VALUES
@@ -87,7 +89,7 @@ INSERT INTO `tbl_color` (`color_id`, `color_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_gender`
+-- Cấu trúc bảng cho bảng `tbl_gender`
 --
 
 CREATE TABLE `tbl_gender` (
@@ -96,7 +98,7 @@ CREATE TABLE `tbl_gender` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_gender`
+-- Đang đổ dữ liệu cho bảng `tbl_gender`
 --
 
 INSERT INTO `tbl_gender` (`gender_id`, `gender_type`) VALUES
@@ -107,7 +109,7 @@ INSERT INTO `tbl_gender` (`gender_id`, `gender_type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_linking_brand`
+-- Cấu trúc bảng cho bảng `tbl_linking_brand`
 --
 
 CREATE TABLE `tbl_linking_brand` (
@@ -117,7 +119,7 @@ CREATE TABLE `tbl_linking_brand` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_linking_brand`
+-- Đang đổ dữ liệu cho bảng `tbl_linking_brand`
 --
 
 INSERT INTO `tbl_linking_brand` (`product_brand_id`, `product_id`, `brand_id`) VALUES
@@ -155,12 +157,24 @@ INSERT INTO `tbl_linking_brand` (`product_brand_id`, `product_id`, `brand_id`) V
 (32, 32, 3),
 (33, 33, 1),
 (34, 34, 3),
-(35, 35, 3);
+(35, 35, 3),
+(37, 43, 1),
+(38, 44, 2),
+(39, 45, 1),
+(40, 46, 3),
+(41, 47, 1),
+(42, 48, 2),
+(43, 49, 1),
+(44, 50, 2),
+(45, 51, 2),
+(46, 52, 3),
+(47, 53, 2),
+(48, 54, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_linking_color`
+-- Cấu trúc bảng cho bảng `tbl_linking_color`
 --
 
 CREATE TABLE `tbl_linking_color` (
@@ -170,12 +184,11 @@ CREATE TABLE `tbl_linking_color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_linking_color`
+-- Đang đổ dữ liệu cho bảng `tbl_linking_color`
 --
 
 INSERT INTO `tbl_linking_color` (`product_color_id`, `product_id`, `color_id`) VALUES
-(1, 1, 8),
-(2, 1, 9),
+(1, 1, 4),
 (3, 2, 1),
 (4, 3, 1),
 (5, 3, 2),
@@ -233,12 +246,25 @@ INSERT INTO `tbl_linking_color` (`product_color_id`, `product_id`, `color_id`) V
 (57, 33, 1),
 (58, 33, 6),
 (59, 34, 1),
-(60, 35, 7);
+(60, 35, 7),
+(61, 41, 2),
+(62, 43, 1),
+(63, 44, 13),
+(64, 45, 2),
+(65, 46, 4),
+(66, 47, 4),
+(67, 48, 4),
+(68, 49, 5),
+(69, 50, 2),
+(70, 51, 2),
+(71, 52, 2),
+(72, 53, 2),
+(73, 54, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_linking_gender`
+-- Cấu trúc bảng cho bảng `tbl_linking_gender`
 --
 
 CREATE TABLE `tbl_linking_gender` (
@@ -248,7 +274,7 @@ CREATE TABLE `tbl_linking_gender` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_linking_gender`
+-- Đang đổ dữ liệu cho bảng `tbl_linking_gender`
 --
 
 INSERT INTO `tbl_linking_gender` (`product_gender`, `product_id`, `gender_id`) VALUES
@@ -286,118 +312,24 @@ INSERT INTO `tbl_linking_gender` (`product_gender`, `product_id`, `gender_id`) V
 (32, 32, 2),
 (33, 33, 2),
 (34, 34, 2),
-(35, 35, 1);
+(35, 35, 1),
+(38, 43, 1),
+(39, 44, 2),
+(40, 45, 2),
+(41, 46, 3),
+(42, 47, 2),
+(43, 48, 3),
+(44, 49, 1),
+(45, 50, 2),
+(46, 51, 2),
+(47, 52, 3),
+(48, 53, 2),
+(49, 54, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_linking_review`
---
-
-CREATE TABLE `tbl_linking_review` (
-  `product_review_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `review_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tbl_linking_review`
---
-
-INSERT INTO `tbl_linking_review` (`product_review_id`, `product_id`, `review_id`) VALUES
-(1, 1, 5),
-(2, 2, 5),
-(3, 3, 5),
-(4, 4, 4),
-(5, 5, 5),
-(6, 6, 5),
-(7, 7, 4),
-(8, 8, 4),
-(9, 9, 5),
-(10, 10, 5),
-(11, 11, 5),
-(12, 12, 5),
-(13, 13, 5),
-(14, 14, 5),
-(15, 15, 5),
-(16, 16, 5),
-(17, 17, 5),
-(18, 18, 5),
-(19, 19, 5),
-(20, 20, 4),
-(21, 21, 5),
-(22, 22, 5),
-(23, 23, 5),
-(24, 24, 5),
-(25, 25, 4),
-(26, 26, 5),
-(27, 27, 5),
-(28, 28, 4),
-(29, 29, 5),
-(30, 30, 3),
-(31, 31, 4),
-(32, 32, 5),
-(33, 33, 4),
-(34, 34, 4),
-(35, 35, 4);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_linking_shipping`
---
-
-CREATE TABLE `tbl_linking_shipping` (
-  `product_shipping_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `shipping_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tbl_linking_shipping`
---
-
-INSERT INTO `tbl_linking_shipping` (`product_shipping_id`, `product_id`, `shipping_id`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 1),
-(4, 4, 2),
-(5, 5, 1),
-(6, 6, 1),
-(7, 7, 1),
-(8, 8, 1),
-(9, 9, 1),
-(10, 10, 1),
-(11, 11, 2),
-(12, 12, 2),
-(13, 13, 2),
-(14, 14, 2),
-(15, 15, 2),
-(16, 16, 2),
-(17, 17, 2),
-(18, 18, 2),
-(19, 19, 2),
-(20, 20, 1),
-(21, 21, 1),
-(22, 22, 1),
-(23, 23, 1),
-(24, 24, 1),
-(25, 25, 1),
-(26, 26, 1),
-(27, 27, 1),
-(28, 28, 1),
-(29, 29, 1),
-(30, 30, 1),
-(31, 31, 2),
-(32, 32, 2),
-(33, 33, 2),
-(34, 34, 2),
-(35, 35, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_products`
+-- Cấu trúc bảng cho bảng `tbl_products`
 --
 
 CREATE TABLE `tbl_products` (
@@ -409,11 +341,11 @@ CREATE TABLE `tbl_products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_products`
+-- Đang đổ dữ liệu cho bảng `tbl_products`
 --
 
 INSERT INTO `tbl_products` (`product_id`, `product_name`, `price`, `detail`, `image`) VALUES
-(1, 'Nike Sportswear Women\'s Heritage 1/2 Zip Hoodie', '$60.00', 'The perfect mix of a hoodie and a 1/2-zip, the Nike Sportswear Heritage Top is made with soft knit fabric and chevron design lines for easygoing comfort and old-school style.\r\n', 'Heritage Zip Hoodie.jpg'),
+(1, 'Nike Sportswear Women\'s Heritage 1/2 Zip Hoodie', '$60.00', 'The perfect mix of a hoodie and a 1/2-zip, the Nike Sportswear Heritage Top is made with soft knit fabric and chevron design lines for easygoing comfort and old-school style.', 'Heritage Zip Hoodie.jpg'),
 (2, 'Under Armour Women\'s HeatGear® Armour Racer Tank', '$29.99', 'HeatGear® Armour is our original performance baselayer—the layer you put on first and take off last. It’s tight to wick away sweat and quick-drying to keep you cool. No athlete can go without it.', 'HeatGearArmour Racer Tank.jpg'),
 (3, 'adidas Men\'s Badge of Sport Pullover French Terry Hoodie', '$74.99', 'Show your pride in the brand with the 3-Stripes. This hoodie features an adidas Badge of Sport front and centre. The sweatshirt is made of soft cotton-blend French terry fabric so you stay comfortable through an active day.\r\n', 'Pullover French Terry Hoodie.jpeg'),
 (4, 'Under Armour Women\'s Tech Twist V-Neck T Shirt', '$29.99', 'Under Armour Women’s Tech Twist V-neck T Shirt is made of UA Tech™ fabric which is quick-drying, ultra-soft & has a more natural feel. It features anti-odor technology that prevents the growth of odor-causing microbes.\r\n', 'Tech Twist V-Neck T Shirt.jpg'),
@@ -444,7 +376,7 @@ INSERT INTO `tbl_products` (`product_id`, `product_name`, `price`, `detail`, `im
 (29, 'Reebok Women\'s Freestyle Motion Low Training Shoes', '$99.99', 'Since its introduction in 1982, the Freestyle has set the standard for women’s fitness footwear. This modernised version is updated for contemporary studio classes. A synthetic and textile upper provides a sock-like fit. A pivot point on the rubber outsole allows you to move freely in low-impact studio workouts.', 'Freestyle Motion Low Training Shoes.jpeg'),
 (30, 'Nike Women\'s Free Metcon 2 Training Shoes - Green/Black', '$119.99', 'The Nike Women’s Free Metcon 2 Training Shoe combines the lightweight flexibility of Nike Free shoes with the responsive cushioning of the Metcons—making it an ideal training shoe for even your most ambitious fitness goals.', 'Free metcon.jpg'),
 (31, 'Under Armour Pure Stretch Hipster Underwear - 3 Pack - Blue', '$29.99', 'Panty lines be gone! The Under Armour Women’s PS Hipster 3-Pack will make sure of that, while also keeping you comfortable and dry with its moisture-wicking, fast-dry material. Laser cut edges add comfort and a sleek design. Includes 3 pairs.\r\n', 'Stretch Hipster Underwear.jpg'),
-(32, 'Under Armour Men\'s Tech 9\" Boxerjock - 2 Pack', '$44.99', 'We took our sweat-wicking, keeps-you-cool technology and turned it into the best underwear in the game. It feels cool, stays put, and provides a zero-distraction fit that’s snug, but not tight.\r\n', 'Tech 9\" Boxerjock.jpg'),
+(32, 'Under Armour Men\'s Tech 9\" Boxerjock - 2 Pack', '$44.99', 'We took our sweat-wicking, keeps-you-cool technology and turned it into the best underwear in the game. It feels cool, stays put, and provides a zero-distraction fit that’s snug, but not tight.\r\n', 'Tech 9 Boxerjock.jpg'),
 (33, 'adidas Sport Performance CLIMALITE® Men\'s Boxer Brief 2 - Pack', '$38.00', 'adidas CLIMALITE® Sport Performance underwear is a lightweight, ultra soft fabric that keeps you cool and dry for everyday use, working out and sports.\r\n', 'Men\'s Boxer Brief.jpg'),
 (34, 'Under Armour Men\'s Charged Cotton 6\" - 3 Pack - Black', '$49.99', 'The UA Men’s Charged Cotton 6\" are made from Charged Cotton® fabric that has the comfort of cotton, but dries much faster.\r\n', 'Charged Cotton 6.jpeg'),
 (35, 'Under Armour Women\'s Pure Stretch Sheers Underwear', '$6.88', 'Say goodbye to panty lines with the Under Armour Women’s Pure Stretch Sheers Bikini. Laser cut edges give the womens underwear a perfectly smooth fit and allows them to disappear under leggings and yoga pants.\r\n', 'Stretch Sheers Underwear.jpg');
@@ -452,7 +384,7 @@ INSERT INTO `tbl_products` (`product_id`, `product_name`, `price`, `detail`, `im
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_product_linking_type`
+-- Cấu trúc bảng cho bảng `tbl_product_linking_type`
 --
 
 CREATE TABLE `tbl_product_linking_type` (
@@ -462,7 +394,7 @@ CREATE TABLE `tbl_product_linking_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_product_linking_type`
+-- Đang đổ dữ liệu cho bảng `tbl_product_linking_type`
 --
 
 INSERT INTO `tbl_product_linking_type` (`product_type_id`, `product_id`, `type_id`) VALUES
@@ -500,12 +432,23 @@ INSERT INTO `tbl_product_linking_type` (`product_type_id`, `product_id`, `type_i
 (32, 32, 6),
 (33, 33, 6),
 (34, 34, 6),
-(35, 35, 6);
+(35, 35, 6),
+(36, 44, 2),
+(37, 45, 2),
+(38, 46, 3),
+(39, 47, 2),
+(40, 48, 3),
+(41, 49, 2),
+(42, 50, 2),
+(43, 51, 1),
+(44, 52, 2),
+(45, 53, 3),
+(46, 54, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_product_type`
+-- Cấu trúc bảng cho bảng `tbl_product_type`
 --
 
 CREATE TABLE `tbl_product_type` (
@@ -514,7 +457,7 @@ CREATE TABLE `tbl_product_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_product_type`
+-- Đang đổ dữ liệu cho bảng `tbl_product_type`
 --
 
 INSERT INTO `tbl_product_type` (`type_id`, `product_type_name`) VALUES
@@ -529,207 +472,153 @@ INSERT INTO `tbl_product_type` (`type_id`, `product_type_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_review`
+-- Cấu trúc bảng cho bảng `tbl_user`
 --
 
-CREATE TABLE `tbl_review` (
-  `review_id` int(11) NOT NULL,
-  `review_scale` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `tbl_user` (
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(20) NOT NULL,
+  `user_pass` varchar(20) NOT NULL,
+  `user_fname` varchar(20) NOT NULL,
+  `user_email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_review`
+-- Đang đổ dữ liệu cho bảng `tbl_user`
 --
 
-INSERT INTO `tbl_review` (`review_id`, `review_scale`) VALUES
-(1, 'Bad'),
-(2, 'I don\'t like it'),
-(3, 'Normal'),
-(4, 'Good product'),
-(5, 'I love it');
-
--- --------------------------------------------------------
+INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_pass`, `user_fname`, `user_email`) VALUES
+(1, 'lanle98', '123', 'lan', ''),
+(2, 'tienle', '123', 'Tien', 'tienle@gmail.com');
 
 --
--- Table structure for table `tbl_shipping`
---
-
-CREATE TABLE `tbl_shipping` (
-  `shipping_id` int(11) NOT NULL,
-  `shipping_type` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tbl_shipping`
---
-
-INSERT INTO `tbl_shipping` (`shipping_id`, `shipping_type`) VALUES
-(1, 'Free'),
-(2, 'Cost');
-
---
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `tbl_brand`
+-- Chỉ mục cho bảng `tbl_brand`
 --
 ALTER TABLE `tbl_brand`
   ADD PRIMARY KEY (`brand_id`);
 
 --
--- Indexes for table `tbl_color`
+-- Chỉ mục cho bảng `tbl_color`
 --
 ALTER TABLE `tbl_color`
   ADD PRIMARY KEY (`color_id`);
 
 --
--- Indexes for table `tbl_gender`
+-- Chỉ mục cho bảng `tbl_gender`
 --
 ALTER TABLE `tbl_gender`
   ADD PRIMARY KEY (`gender_id`);
 
 --
--- Indexes for table `tbl_linking_brand`
+-- Chỉ mục cho bảng `tbl_linking_brand`
 --
 ALTER TABLE `tbl_linking_brand`
   ADD PRIMARY KEY (`product_brand_id`);
 
 --
--- Indexes for table `tbl_linking_color`
+-- Chỉ mục cho bảng `tbl_linking_color`
 --
 ALTER TABLE `tbl_linking_color`
   ADD PRIMARY KEY (`product_color_id`);
 
 --
--- Indexes for table `tbl_linking_gender`
+-- Chỉ mục cho bảng `tbl_linking_gender`
 --
 ALTER TABLE `tbl_linking_gender`
   ADD PRIMARY KEY (`product_gender`);
 
 --
--- Indexes for table `tbl_linking_review`
---
-ALTER TABLE `tbl_linking_review`
-  ADD PRIMARY KEY (`product_review_id`);
-
---
--- Indexes for table `tbl_linking_shipping`
---
-ALTER TABLE `tbl_linking_shipping`
-  ADD PRIMARY KEY (`product_shipping_id`);
-
---
--- Indexes for table `tbl_products`
+-- Chỉ mục cho bảng `tbl_products`
 --
 ALTER TABLE `tbl_products`
   ADD PRIMARY KEY (`product_id`);
 
 --
--- Indexes for table `tbl_product_linking_type`
+-- Chỉ mục cho bảng `tbl_product_linking_type`
 --
 ALTER TABLE `tbl_product_linking_type`
   ADD PRIMARY KEY (`product_type_id`);
 
 --
--- Indexes for table `tbl_product_type`
+-- Chỉ mục cho bảng `tbl_product_type`
 --
 ALTER TABLE `tbl_product_type`
   ADD PRIMARY KEY (`type_id`);
 
 --
--- Indexes for table `tbl_review`
+-- Chỉ mục cho bảng `tbl_user`
 --
-ALTER TABLE `tbl_review`
-  ADD PRIMARY KEY (`review_id`);
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `tbl_shipping`
---
-ALTER TABLE `tbl_shipping`
-  ADD PRIMARY KEY (`shipping_id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `tbl_brand`
+-- AUTO_INCREMENT cho bảng `tbl_brand`
 --
 ALTER TABLE `tbl_brand`
   MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `tbl_color`
+-- AUTO_INCREMENT cho bảng `tbl_color`
 --
 ALTER TABLE `tbl_color`
   MODIFY `color_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `tbl_gender`
+-- AUTO_INCREMENT cho bảng `tbl_gender`
 --
 ALTER TABLE `tbl_gender`
   MODIFY `gender_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tbl_linking_brand`
+-- AUTO_INCREMENT cho bảng `tbl_linking_brand`
 --
 ALTER TABLE `tbl_linking_brand`
-  MODIFY `product_brand_id` mediumint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `product_brand_id` mediumint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT for table `tbl_linking_color`
+-- AUTO_INCREMENT cho bảng `tbl_linking_color`
 --
 ALTER TABLE `tbl_linking_color`
-  MODIFY `product_color_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `product_color_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
--- AUTO_INCREMENT for table `tbl_linking_gender`
+-- AUTO_INCREMENT cho bảng `tbl_linking_gender`
 --
 ALTER TABLE `tbl_linking_gender`
-  MODIFY `product_gender` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `product_gender` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
--- AUTO_INCREMENT for table `tbl_linking_review`
---
-ALTER TABLE `tbl_linking_review`
-  MODIFY `product_review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `tbl_linking_shipping`
---
-ALTER TABLE `tbl_linking_shipping`
-  MODIFY `product_shipping_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `tbl_products`
+-- AUTO_INCREMENT cho bảng `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- AUTO_INCREMENT for table `tbl_product_linking_type`
+-- AUTO_INCREMENT cho bảng `tbl_product_linking_type`
 --
 ALTER TABLE `tbl_product_linking_type`
-  MODIFY `product_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `product_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT for table `tbl_product_type`
+-- AUTO_INCREMENT cho bảng `tbl_product_type`
 --
 ALTER TABLE `tbl_product_type`
   MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tbl_review`
+-- AUTO_INCREMENT cho bảng `tbl_user`
 --
-ALTER TABLE `tbl_review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tbl_shipping`
---
-ALTER TABLE `tbl_shipping`
-  MODIFY `shipping_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `tbl_user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

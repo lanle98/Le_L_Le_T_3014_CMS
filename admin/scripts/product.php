@@ -92,25 +92,25 @@ function editProduct($product)
     try {
         $pdo = Database::getInstance()->getConnection();
 
-        // $cover = $product['image'];
-        // $upload_file = pathinfo($cover['name']);
-        // $accepted_types = array('gif', 'jpg', 'png', 'jpeg', 'webp');
-        // if (!in_array($upload_file['extension'], $accepted_types)) {
-        //     throw new Exception('Wrong file type');
-        // }
+        $cover = $product['image'];
+        $upload_file = pathinfo($cover['name']);
+        $accepted_types = array('gif', 'jpg', 'png', 'jpeg', 'webp');
+        if (!in_array($upload_file['extension'], $accepted_types)) {
+            throw new Exception('Wrong file type');
+        }
 
-        // $image_path = '../images/';
-        // $generated_name = md5($upload_file['file_name'] . time());
-        // $generated_filename = $generated_name . '.' . $upload_file["extension"];
-        // $targetpath = $image_path . $generated_filename;
+        $image_path = '../images/';
+        $generated_name = md5($upload_file['file_name'] . time());
+        $generated_filename = $generated_name . '.' . $upload_file["extension"];
+        $targetpath = $image_path . $generated_filename;
 
-        // if (!move_uploaded_file($cover['tmp_name'], $targetpath)) {
-        //     throw new Exception('Failed to move uploaded file, check permission!');
-        // };
+        if (!move_uploaded_file($cover['tmp_name'], $targetpath)) {
+            throw new Exception('Failed to move uploaded file, check permission!');
+        };
 
 
 
-        $insert_product_query = 'UPDATE `tbl_products` SET product_name=:name,price=:price,detail=:detail';
+        $insert_product_query = 'UPDATE `tbl_products` SET product_name=:name,price=:price,detail=:detail,image=:image';
         $insert_product_query .= ' WHERE product_id=:product_id';
 
         $insert_product = $pdo->prepare($insert_product_query);
@@ -119,7 +119,7 @@ function editProduct($product)
                 ':name' => $product['name'],
                 ':price' => $product['price'],
                 ':detail' => $product['detail'],
-                // ':image' => $generated_filename,
+                ':image' => $generated_filename,
                 ':product_id' => $product['id']
             )
         );
